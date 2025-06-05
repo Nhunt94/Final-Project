@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/custom.css">
+</head>
+<body>
+    
+    <nav>
+    <button id="top" class="menu-button" onclick="toggleMenu()">☰</button>
+    <div class="nav-links" id="navLinks">
+        <a href="index.html" class="NavText">Home</a>
+        <a href="#youtubeVideo" class="NavText">YouTube</a>
+        <a href="#viz1748910123571" class="NavText">Tableua Visual</a>
+        <a href="game.html" class="NavText">Game</a>
+    </div>
+  </nav>
+
+  <script>
+    function toggleMenu() {
+      const links = document.getElementById('navLinks');
+      links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
+    }
+  </script>
+
+    <div class="top">
+        
+        <h4>Mountain Biking</h4>
+    </div>
+
+   <div class="body">
+        <ol>
+            <ul> My Favorite Rides
+                <li>
+                    <h2>Alpine Loop</h2>
+                    <p>It's a 36 miles loop with 3,600 ft. of climbing. It takes about 3 hours.</p>
+                </li>
+                <li>
+                    <h2>Whole Enchilda</h2>
+                    <p>It is about 13 miles of straight downhill. It's located in Moab, Utah.</p>
+                </li>
+                <li>
+                    <h2>Southview Loop</h2>
+                    <p>4.5 mile loop in Cedar City. One of the funnest downhills I've rode.</p>
+                </li>
+            </ul>
+        </ol>
+        <img class="centerImg" src="assets/img/Bikes.jpeg" alt="Riding Bikes in Provo" width="450">
+
+        <iframe width="560" height="315" class="centerImg"
+        src="https://www.youtube.com/embed/nakoqhu61nI?si=FqdIgQVMlORKzmUU" title="YouTube video player" id="youtubeVideo"
+        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+        </iframe>
+
+        <div class='tableauPlaceholder' id='viz1748910123571' style='position: relative'>
+            <noscript><a href='#'><img alt='Locations ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;bi&#47;bike-accidents_17489099799220&#47;Locations&#47;1_rss.png' style='border: none' /></a></noscript>
+            <object class='tableauViz'  style='display:none;'>
+                <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+                <param name='embed_code_version' value='3' /> 
+                <param name='site_root' value='' />
+                <param name='name' value='bike-accidents_17489099799220&#47;Locations' />
+                <param name='tabs' value='no' />
+                <param name='toolbar' value='yes' />
+                <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;bi&#47;bike-accidents_17489099799220&#47;Locations&#47;1.png' /> 
+                <param name='animate_transition' value='yes' />
+                <param name='display_static_image' value='yes' />
+                <param name='display_spinner' value='yes' />
+                <param name='display_overlay' value='yes' />
+                <param name='display_count' value='yes' />
+                <param name='language' value='en-US' />
+                <param name='filter' value='publish=yes' />
+            </object>
+        </div>                
+        <script type='text/javascript'>                    
+            var divElement = document.getElementById('viz1748910123571');                    
+            var vizElement = divElement.getElementsByTagName('object')[0];                    
+            vizElement.style.minWidth='320px';vizElement.style.maxWidth='620px';vizElement.style.width='100%';vizElement.style.height='1027px';                    
+            var scriptElement = document.createElement('script');                    
+            scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    
+            vizElement.parentNode.insertBefore(scriptElement, vizElement);
+        </script>
+        <br><br><br>
+        <a href="#top">Back to Top</a>
+    </div> 
+    
+</body>
+</html>

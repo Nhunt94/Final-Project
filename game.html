@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>3-Letter Wordle</title>
+  <style>
+    body {
+      background: #121213;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 50px;
+    }
+
+    #board {
+      display: grid;
+      grid-template-columns: repeat(3, 60px);
+      grid-gap: 5px;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .tile {
+      width: 60px;
+      height: 60px;
+      border: 2px solid #3a3a3c;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: bold;
+      text-transform: uppercase;
+      background-color: #121213;
+      color: white;
+    }
+
+    .correct {
+      background-color: #538d4e;
+    }
+
+    .present {
+      background-color: #b59f3b;
+    }
+
+    .absent {
+      background-color: #3a3a3c;
+    }
+
+    #message {
+      font-size: 18px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+    <a href="custom.html" class="NavText" style="color: white;">Custom</a>
+  <h1>3-Letter Wordle</h1>
+  <div id="board"></div>
+  <div id="message"></div>
+
+  <script>
+    const words = ["cat", "dog", "sun", "hat", "box", "fan", "map"];
+    const word = words[Math.floor(Math.random() * words.length)];
+    const board = document.getElementById("board");
+    const message = document.getElementById("message");
+
+    let currentRow = 0;
+    let currentGuess = "";
+    const maxAttempts = 6;
+
+    // Create grid (3 letters × 6 rows)
+    for (let i = 0; i < maxAttempts * 3; i++) {
+      const tile = document.createElement("div");
+      tile.className = "tile";
+      tile.id = "tile-" + i;
+      board.appendChild(tile);
+    }
+
+    document.addEventListener("keydown", (e) => {
+      if (message.textContent.includes("win") || message.textContent.includes("Over")) return;
+
+      if (e.key === "Backspace" && currentGuess.length > 0) {
+        currentGuess = currentGuess.slice(0, -1);
+        updateBoard();
+      } else if (/^[a-zA-Z]$/.test(e.key) && currentGuess.length < 3) {
+        currentGuess += e.key.toLowerCase();
+        updateBoard();
+      } else if (e.key === "Enter" && currentGuess.length === 3) {
+        submitGuess();
+      }
+    });
+
+    function updateBoard() {
+      for (let i = 0; i < 3; i++) {
+        const tile = document.getElementById("tile-" + (currentRow * 3 + i));
+        tile.textContent = currentGuess[i] ? currentGuess[i].toUpperCase() : "";
+        tile.className = "tile"; // clear previous result color
+      }
+    }
+
+    function submitGuess() {
+      const guess = currentGuess;
+      const wordArray = word.split("");
+      const result = Array(3).fill("absent");
+
+      // First pass: exact matches
+      for (let i = 0; i < 3; i++) {
+        if (guess[i] === word[i]) {
+          result[i] = "correct";
+          wordArray[i] = null;
+        }
+      }
+
+      // Second pass: present elsewhere
+      for (let i = 0; i < 3; i++) {
+        if (result[i] !== "correct" && wordArray.includes(guess[i])) {
+          result[i] = "present";
+          wordArray[wordArray.indexOf(guess[i])] = null;
+        }
+      }
+
+      // Update tile colors
+      for (let i = 0; i < 3; i++) {
+        const tile = document.getElementById("tile-" + (currentRow * 3 + i));
+        tile.classList.add(result[i]);
+      }
+
+      if (guess === word) {
+        message.textContent = "🎉 You win!";
+      } else {
+        currentRow++;
+        currentGuess = "";
+        if (currentRow === maxAttempts) {
+          message.textContent = `❌ Game Over! The word was: ${word.toUpperCase()}`;
+        }
+      }
+    }
+  </script>
+  <button onclick="location.reload();">Reset</button>
+
+</body>
+</html>
+

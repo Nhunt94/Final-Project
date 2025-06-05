@@ -1,0 +1,87 @@
+li {
+    font-style: bold;
+}
+h4 {
+    font-style: italic;
+    font-size: large;
+}
+p {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.top {
+    background-color: #000000;
+    padding: 10px;
+    border-radius: 5px;
+    border-color: rgb(255, 255, 255);
+    border-style: double;
+    color: rgb(255, 255, 255);
+
+}
+.body {
+    border-radius: 5px;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    
+}
+.centerImg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 250px;
+    margin-top: 250px;
+}
+nav {
+      background-color: #fcf9f9;
+      padding: 10px;
+}
+
+nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+}
+
+nav ul li {
+      margin-right: 20px;
+    }
+
+nav ul li a {
+      color: rgb(0, 0, 0);
+      text-decoration: none;
+      font-weight: bold;
+}
+
+nav ul li a:hover {
+      text-decoration: underline;
+}
+.menu-button {
+      background: none;
+      border: none;
+      color: rgb(0, 0, 0);
+      font-size: 24px;
+      cursor: pointer;
+}
+.menuButton{
+        display: none;
+}
+
+.nav-links {
+        display: flex;
+        flex-direction: row;
+}
+
+.nav-links a {
+        border: none;
+        margin-right: 20px;
+}
+.NavText {
+        color: rgb(0, 0, 0);
+}
+html, body {
+      height: 100%;              /* Ensure full page height */
+      margin: 0;                 /* Remove default spacing */
+      padding: 0;
+      background-color: antiquewhite; /* Your desired background color */
+}
